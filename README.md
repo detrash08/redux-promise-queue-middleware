@@ -5,7 +5,7 @@ A simple redux middleware to chain async actions using promises
 npm install --save redux-promise-queue-middleware
 ```
 ## Usage
-Import the middleware and initialize it calling applyMiddleware upon Redux store creation:
+Import the middleware and pass it to applyMiddleware upon Redux store creation
 ```js
 import {createStore, applyMiddleware} from 'redux'
 import promiseQueueMiddleware from 'redux-promise-queue-middleware'
