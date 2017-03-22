@@ -11,9 +11,9 @@ export default function promiseQueueMiddleware() {
             queues[queueInstance.id] = dequeue(queueInstance, store, next, action);
         else
             queues[queueInstance.id] = queues[queueInstance.id].then((lastResult) => {
-                    return dequeue(queueInstance, store, next, action, lastResult);
-    });
-};
+                return dequeue(queueInstance, store, next, action, lastResult);
+            }, ()=> queues[queueInstance.id] = undefined);
+    };
 }
 
 function dequeue(queueInstance, store, next, action, lastResult) {
@@ -21,10 +21,18 @@ function dequeue(queueInstance, store, next, action, lastResult) {
         queueInstance.onActionDequeue(action, lastResult, store);
 
     return new Promise((resolve, reject) => {
-            let promise = queueInstance.promise ? queueInstance.promise : next(action);
+        let promise = queueInstance.promise ? queueInstance.promise : next(action);
 
         if (promise instanceof Promise)
-            promise.then((lastResult) => {resolve(lastResult);});
+            promise.then((lastResult) => {
+                resolve(lastResult);
+            }, ()=> {
+                if (action.clearQueueOnReject)
+                    reject();
+                else
+                    resolve()
+
+            });
         else
             resolve();
     });
