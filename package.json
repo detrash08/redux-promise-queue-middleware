@@ -1,6 +1,6 @@
 {
   "name": "redux-promise-queue-middleware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple redux middleware to chain async actions using promises",
   "main": "dist/index.js",
   "scripts": {
