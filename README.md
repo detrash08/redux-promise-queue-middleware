@@ -36,7 +36,7 @@ function actionToEnqueue(){
 }
 ```
 ### Usage with promise middleware 
-If you already use a middleware for managing promises you can add the `promiseQueueMiddleware` before it to manage queues without affecting it's behavior:
+If you already use a middleware for managing promises you can add the `promiseQueueMiddleware` before it to manage queues without affecting its behavior:
 ```js
 import {createStore, applyMiddleware} from 'redux'
 import promiseQueueMiddleware from 'redux-promise-queue-middleware'
@@ -48,7 +48,7 @@ let createStoreAndApplyMiddleware = applyMiddleware(
     //others middleware...
 )(createStore);
 ```
-In this case you can avoid to fill the `promise` option and let your promise middleware to handle and return the promise to schedule.
+In this case you can avoid filling the `promise` option and let your promise middleware to handle and return the promise to schedule.
 
 ### Options
 Name|Type|Default|Description
