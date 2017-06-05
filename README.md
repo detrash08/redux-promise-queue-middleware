@@ -22,7 +22,7 @@ function actionToEnqueue(){
     return {
         type: 'ACTION-TYPE'
         queue:{
-            name: 'QUEUE-NAME'
+            id: 'QUEUE-NAME'
             promise: new Promise((resolve)=>{ 
                         console.log('async action begin');
                         setTimeout(()=>{
@@ -53,7 +53,7 @@ In this case you can avoid filling the `promise` option and let your promise mid
 ### Options
 Name|Type|Default|Description
 ----|----|-------|------------
-name|string|`undefined`|name of the queue. Note: in order to work a queue name must be specified 
+id|string|`undefined`|name of the queue. Note: in order to work a queue name must be specified 
 promise|func|`undefined`|promise used to wait for async operation (optional)
 onActionDequeue|func|`undefined`|operations to perform after action dequeue and before it's execution
 clearQueueOnReject|bool|`false`| if an action of the queue is rejected the following actions in the queue won't be executed 
